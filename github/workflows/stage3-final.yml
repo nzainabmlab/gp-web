@@ -1,0 +1,16 @@
+name: Stage 3 - Final hop
+
+"on":
+  repository_dispatch:
+    types: [be-tested]
+
+jobs:
+  final:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm payload survived both hops
+        run: |
+          echo "STAGE 3 PASS - payload traversed gp-platform to gp-api to gp-web"
+          echo "feature_id: ${{ github.event.client_payload.feature_id }}"
+          echo "pin: ${{ github.event.client_payload.pin }}"
+          echo "arrived from: ${{ github.event.client_payload.origin }}"
